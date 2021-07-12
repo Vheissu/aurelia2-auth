@@ -1,9 +1,8 @@
 import { extend, forEach, joinUrl, status } from "./auth-utilities";
 import { Storage } from "./storage";
 import { Popup } from "./popup";
-import { IAuthConfigOptions } from "./base-config";
+import { IAuthConfigOptions, IAuthOptions } from "./configuration";
 import { IHttpClient, json } from "@aurelia/fetch-client";
-import { IAuthOptions } from "aurelia-auth";
 
 export class OAuth1 {
   protected defaults;

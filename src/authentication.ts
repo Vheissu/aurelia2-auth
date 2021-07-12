@@ -1,7 +1,6 @@
 import {Storage} from './storage';
 import {joinUrl, isObject, isString} from './auth-utilities';
-import { IAuthOptions } from './aurelia-auth';
-import { IAuthConfigOptions } from './base-config';
+import { IAuthOptions, IAuthConfigOptions } from './configuration';
 
 export class Authentication {
     private tokenName;

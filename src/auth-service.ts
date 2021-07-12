@@ -5,7 +5,7 @@ import { OAuth2 } from "./oAuth2";
 import { status, joinUrl } from "./auth-utilities";
 import { EventAggregator } from "@aurelia/kernel";
 import { IAuthOptions } from "./aurelia-auth";
-import { IAuthConfigOptions } from "./base-config";
+import { IAuthConfigOptions } from "configuration";
 
 export class AuthService {
   protected tokenInterceptor;

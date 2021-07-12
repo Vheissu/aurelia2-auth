@@ -1,5 +1,4 @@
-import { IAuthOptions } from './aurelia-auth';
-import { IAuthConfigOptions } from 'base-config';
+import { IAuthConfigOptions, IAuthOptions } from "./configuration";
 import {parseQueryString, extend, forEach} from './auth-utilities';
 
 export class Popup {

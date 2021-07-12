@@ -1,5 +1,4 @@
-import { IAuthOptions } from "./aurelia-auth";
-import { IAuthConfigOptions } from "./base-config";
+import { IAuthConfigOptions, IAuthOptions } from "./configuration";
 
 export class Storage {
   private storage;
@@ -11,7 +10,7 @@ export class Storage {
   get(key) {
     return this.storage.getItem(key);
   }
-  
+
   set(key, value) {
     return this.storage.setItem(key, value);
   }

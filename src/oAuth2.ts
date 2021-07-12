@@ -10,9 +10,8 @@ import {
 } from "./auth-utilities";
 import { Storage } from "./storage";
 import { Popup } from "./popup";
-import { IAuthConfigOptions } from "./base-config";
+import { IAuthConfigOptions, IAuthOptions } from "./configuration";
 import { Authentication } from "./authentication";
-import { IAuthOptions } from "./aurelia-auth";
 
 export class OAuth2 {
   protected defaults;

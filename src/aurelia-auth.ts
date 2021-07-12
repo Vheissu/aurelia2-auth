@@ -1,31 +1,34 @@
 import { FetchConfig } from './auth-fetch-config';
-import { defaultAuthConfigOptions, IAuthConfigOptions } from './base-config';
+import { IAuthConfigOptions, IAuthOptions } from './configuration';
+import { defaultAuthConfigOptions } from './base-config';
 import { AuthService } from './auth-service';
 import { AuthorizeHook } from './authorize-hook';
 import { AuthFilterValueConverter } from './auth-filter';
-import { DI, IContainer, IRegistry, Registration } from '@aurelia/kernel';
+import { IContainer, IRegistry, noop, Registration } from '@aurelia/kernel';
 
 export const DefaultComponents: IRegistry[] = [
-    AuthFilterValueConverter as unknown as IRegistry,
-    AuthService as unknown as IRegistry,
-    AuthorizeHook as unknown as IRegistry,
-    FetchConfig as unknown as IRegistry
+    AuthFilterValueConverter as unknown as IRegistry
 ];
 
-export const IAuthOptions = DI.createInterface<IAuthConfigOptions>('IAuthOptions');
-
-function instantiateAuthConfiguration(optionsCallback: (options: IAuthConfigOptions) => void) {
+function createConfiguration(options?: Partial<IAuthConfigOptions>) {
     return {
-        optionsCallback,
         register(container: IContainer): IContainer {
-            optionsCallback(defaultAuthConfigOptions);
-    
-            return container.register(Registration.instance(IAuthOptions, defaultAuthConfigOptions), DefaultComponents);
+            const mergedOptions: Partial<IAuthConfigOptions> = {
+                ...defaultAuthConfigOptions,
+                ...options
+            };
+
+            return container.register(
+                Registration.instance(IAuthOptions, mergedOptions), 
+                ...DefaultComponents
+            );
         },
-        customize(callback?: (options: IAuthConfigOptions) => void) {
-            return instantiateAuthConfiguration(callback ?? optionsCallback);
+        configure(options?: IAuthConfigOptions) {
+            return createConfiguration(options);
         }
     }
 }
 
-export const AureliaAuthConfiguration = instantiateAuthConfiguration(() => {});
+export const AureliaAuthConfiguration = createConfiguration({});
+
+export { AuthService, AuthorizeHook, IAuthOptions, IAuthConfigOptions, FetchConfig };
