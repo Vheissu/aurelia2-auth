@@ -3,9 +3,13 @@ import { Authentication } from "./authentication";
 import { OAuth1 } from "./oAuth1";
 import { OAuth2 } from "./oAuth2";
 import { status, joinUrl } from "./auth-utilities";
-import { EventAggregator } from "@aurelia/kernel";
+import { DI, EventAggregator } from "@aurelia/kernel";
 import { IAuthOptions } from "./aurelia-auth";
 import { IAuthConfigOptions } from "configuration";
+
+export const IAuthService = DI.createInterface<IAuthService>("IAuthService", x => x.singleton(AuthService));
+
+export interface IAuthService extends AuthService {  }
 
 export class AuthService {
   protected tokenInterceptor;

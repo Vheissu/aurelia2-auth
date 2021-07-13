@@ -1,6 +1,6 @@
 {
     "name": "aurelia2-auth",
-    "version": "0.0.6",
+    "version": "0.0.9",
     "description": "A port of the Aurelia Auth plugin to v2",
     "main": "dist/aurelia2-auth.js",
     "module": "dist/aurelia2-auth.es.js",

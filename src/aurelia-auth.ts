@@ -1,10 +1,10 @@
 import { FetchConfig } from './auth-fetch-config';
 import { IAuthConfigOptions, IAuthOptions } from './configuration';
 import { defaultAuthConfigOptions } from './base-config';
-import { AuthService } from './auth-service';
+import { AuthService, IAuthService } from './auth-service';
 import { AuthorizeHook } from './authorize-hook';
 import { AuthFilterValueConverter } from './auth-filter';
-import { IContainer, IRegistry, noop, Registration } from '@aurelia/kernel';
+import { IContainer, IRegistry, Registration } from '@aurelia/kernel';
 
 export const DefaultComponents: IRegistry[] = [
     AuthFilterValueConverter as unknown as IRegistry
@@ -31,4 +31,4 @@ function createConfiguration(options?: Partial<IAuthConfigOptions>) {
 
 export const AureliaAuthConfiguration = createConfiguration({});
 
-export { AuthService, AuthorizeHook, IAuthOptions, IAuthConfigOptions, FetchConfig };
+export { AuthService, AuthorizeHook, IAuthOptions, IAuthConfigOptions, FetchConfig, IAuthService};
