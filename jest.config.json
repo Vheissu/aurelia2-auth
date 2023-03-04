@@ -47,9 +47,6 @@
     "setupFiles": [
         "<rootDir>/test/jest.setup.ts"
     ],
-    "setupFilesAfterEnv": [
-        "<rootDir>/test/jest.timeout.ts"
-    ],
     "modulePaths": [
         "<rootDir>/src",
         "<rootDir>/node_modules"
